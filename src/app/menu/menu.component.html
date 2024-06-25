@@ -1,0 +1,18 @@
+<div dir=rtl style="justify-content: center; text-align: center;" *ngIf="showMenu()">
+    <h1 *ngIf="currentPage !== 'BankBranchDetails'">{{getBankName()}}</h1>
+    <h2 *ngIf="currentPage !== 'BankBranchDetails'">סניף {{getBranchName()}} מספר {{getBranchNumber()}} חשבון {{getAccountNumber()}}</h2>
+    <label *ngIf="currentPage !== 'AccountOwner'">שם בעל החשבון: {{getAccountOwnerName()}}</label>
+    <br />
+    <img [src]="getPictureSource()" height="80" *ngIf="currentPage !== 'AccountOwner'">
+    <br />
+    <label *ngIf="currentPage !== 'BankTransactionTable'">יתרה בחשבון: {{getMenuBarContent() | currency:'ILS' }}</label>
+    <label *ngIf="currentPage !== 'BankTransactionTable'">תאריך התנועה האחרונה: {{getLastTransactionDate() | date :'dd/MM/yyyy'}}</label>
+    <ul class="nav" style="justify-content: center;">
+        <li class="nav-item"><a class="nav-link" routerLink="/BankAccount">הזנת תנועות</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/BankTransactionTable">טבלת התנועות</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/BankBranchDetails">סניף הבנק</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/AccountOwner">שינוי פרטי בעל החשבון </a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/ChangePassword">שינוי סיסמא </a></li>
+        <li class="nav-item"><a class="nav-link" style="cursor:pointer ;" (click)="logOut()">התנתקות </a></li>
+    </ul>
+</div>

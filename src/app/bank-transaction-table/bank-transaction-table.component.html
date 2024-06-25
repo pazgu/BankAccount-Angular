@@ -1,0 +1,25 @@
+<div>
+  <br />
+  <h1>טבלת התנועות:</h1>
+  <br />
+  <div id="notransactions" *ngIf="bankTransactions.length === 0">אין תנועות להצגה</div>
+  <table *ngIf="bankTransactions.length > 0" class="center">
+    <tr>
+      <th>מספר שורה</th>
+      <th>תאריך פעולה</th>
+      <th>סוג פעולה</th>
+      <th>סכום</th>
+      <th>יתרה</th>
+    </tr>
+    <tr *ngFor="let transaction of bankTransactions; let i = index"
+      [ngClass]="transaction.currentBalance < 0 ? 'negetive' : ''">
+      <td><a [routerLink]="['/TransactionComponent']" [queryParams]="{ index: i }">{{ i + 1 }}</a></td>
+      <td>{{ transaction.trnDate | date : "dd/MM/yyyy" }}</td>
+      <td>{{ transactionTypeNames[transaction.trnTyp] }}</td>
+      <td>{{ transaction.amount | currency : "ILS" }}</td>
+      <td>{{ transaction.currentBalance | currency : "ILS" }}</td>
+    </tr>
+  </table>
+  <br />
+  <button (click)="goBack()">חזור לדף הזנת תנועות</button>
+</div>

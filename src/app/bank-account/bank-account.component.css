@@ -1,0 +1,7 @@
+h1,p{text-align: center;}
+h1 {font-size: x-large;}
+.minus{color:red}
+div {margin:0 auto;width:1200px;text-align:center;direction: rtl;}
+:invalid{background-color: red;} /* to the asmachta field*/
+input:valid{background-color: lightgreen;}
+input:invalid{background-color: red;}

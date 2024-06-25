@@ -1,0 +1,5 @@
+input:valid{background-color: lightgreen;}
+input:invalid{background-color: red;}
+h1 {font-size: x-large;}
+button {margin: 8px;}
+div {text-align: center; direction: rtl;}

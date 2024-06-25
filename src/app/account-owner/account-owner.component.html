@@ -1,0 +1,24 @@
+<div>
+    <h1>{{ isEditMode ? 'שמור פרטי חשבון:' : 'ערוך פרטי חשבון:' }}</h1>
+    <br><br>
+    <img [src]="(owner.hasPicture)?'assets/images/'+owner.tz+'.png':'assets/images/noImage.png'" height="80">
+    <br><br>
+    <label for=shem>שם:</label>
+    <input required type=text id=shem [(ngModel)]="owner.name" [disabled]="!isEditMode">
+    <br><br>
+    <label for=adrs>כתובת:</label>
+    <input required type=text id=adrs [(ngModel)]="owner.address" [disabled]="!isEditMode">
+    <br><br>
+    <label for=tzNum>תז:</label>
+    <input required type=number id=tzNum value={{owner.tz}} disabled>
+    <br><br>
+    <label for=pic>תמונה:</label>
+    <input type=checkbox id=pic [(ngModel)]="owner.hasPicture" [disabled]="!isEditMode" (change)="onHasPictureChange($event)">
+    <br><br>
+    <button *ngIf="isEditMode" (click)="revert()">בטל שינויים</button>
+      <button (click)="isEditMode ? updateOwnerName() : toggleEditMode()">
+        {{ isEditMode ? 'שמור שינויים' : 'ערוך' }}
+      </button>    
+      <br><br>
+    <a *ngIf="jobDone" routerLink="/AccountLogin">שינוי השם הצליח! הקש כאן לכניסה מחדש למערכת</a>
+</div>

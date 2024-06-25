@@ -1,0 +1,25 @@
+<div>
+  <h1>{{ isEditMode ? 'שמור פרטי סניף:' : 'ערוך פרטי סניף:' }}</h1>
+  <br>
+  <label for=bankName>שם הבנק:</label>
+  <input required type=text id=bankName [(ngModel)]="bankAccountDetails.bankName" name="bankName" disabled>
+  <br><br>
+  <label for="branchName">שם הסניף:</label>
+  <input required type="text" id="branchName" [(ngModel)]="bankAccountDetails.branchName" name="branchName"
+    [disabled]="!isEditMode">
+  <br><br>
+  <label for="branchNumber">מספר הסניף:</label>
+  <input required type="text" id="branchNumber" [(ngModel)]="bankAccountDetails.branchNumber" name="branchNumber"
+    [disabled]="!isEditMode">
+  <br><br>
+  <label for="accountNumber">מספר חשבון:</label>
+  <input required type="text" id="accountNumber" [(ngModel)]="bankAccountDetails.accountNumber" name="accountNumber"
+    [disabled]="!isEditMode">
+  <br><br>
+  <button *ngIf="isEditMode" (click)="revert()">בטל שינויים</button>
+  <button (click)="isEditMode ? updateBranch() : toggleEditMode()">
+    {{ isEditMode ? 'שמור שינויים' : 'ערוך' }}
+  </button>
+  <br><br>
+  <a *ngIf="jobDone" routerLink="/AccountLogin">שינוי פרטי הסניף הצליח! הקש כאן לכניסה מחדש למערכת</a>
+</div>

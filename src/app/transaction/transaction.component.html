@@ -1,0 +1,28 @@
+<div style="text-align: center; direction: rtl;">
+    <h1>פרטי הטרנזקציה: </h1>
+    <label><b>אסמכתא:</b>&nbsp;</label>
+    <output> {{transaction.asmachta}}</output>
+    <br>
+    <label><b>מספר שורה:</b>&nbsp;</label>
+    <output> {{index+1}}</output>
+    <br>
+    <label><b>תאריך:</b>&nbsp;</label>
+    <output> {{transaction.trnDate | date :'dd/MM/yyyy'}}</output>
+    <br>
+    <label><b>סוג פעולה:</b>&nbsp;</label>
+    <output>{{transactionTypeNames[transaction.trnTyp]}}</output>
+    <br>
+    <label><b>סכום פעולה לביצוע:</b>&nbsp;</label>
+    <output>{{transaction.amount | currency:'ILS'}}</output>
+    <br>
+    <label><b>יתרה:</b>&nbsp;</label>
+    <output>{{transaction.currentBalance | currency: 'ILS'}}</output>
+    <br>
+    <label><b>הערה:</b>&nbsp;</label>
+    <output>{{transaction.comment? transaction.comment: "אין הערה להצגה"}}</output>
+    <br>
+    <br>
+    <button (click)="goBack()">חזרה לטבלת הפעולות</button>
+    <button (click)="onDeleteTransaction()">מחיקת טרנזקציה</button>
+
+</div>

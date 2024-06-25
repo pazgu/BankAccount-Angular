@@ -1,0 +1,4 @@
+div{text-align: center; direction: rtl;}
+input:valid{background-color: lightgreen;}
+input:invalid{background-color: red;}
+h1 {font-size: large;}

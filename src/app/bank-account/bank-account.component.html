@@ -1,0 +1,31 @@
+<div>
+    <br>
+    <h1>ביצוע פעולה:</h1><br>
+    <label for=amount>סכום:</label>
+    <input required type=number id=amount min=0 [(ngModel)]="currentAmount"/>
+    <br><br>
+    <label for=asmachta>אסמכתא:</label>
+    <textarea id=asmachta [(ngModel)]="currentTransactionAsmachta" minlength=4></textarea>
+    <br><br>
+    <label for=currentDate>תאריך:</label>
+    <input required type=date id=currentDate [(ngModel)]="currentTransactionDateS" />
+    <br><br>
+    <label for=action>סוג פעולה:</label>
+    <select required id="action" [(ngModel)]="currentTransactionType">
+        <option value="-1">נא לבחור</option>
+        <option *ngIf="transactions.length == 0" value="0">פתיחת חשבון</option>
+        <option *ngIf="transactions.length == 0 || transactions.length > 0" value="1">הפקדה</option>
+        <option *ngIf="transactions.length == 0 || transactions.length > 0" value="2">משיכה</option>
+    </select>
+    <br><br>
+    <textarea id="comment" name="comment" rows="4" cols="50" [(ngModel)]="comment"></textarea>
+    <br><br>
+    <button type="button" (click)='doTransaction();'>בצע פעולה </button>
+    <br><br>        
+    <p *ngIf="!lastActionFail">
+        {{transaction}}
+    </p>
+    <p *ngIf="lastActionFail" dir="rtl">
+        פעולה נדחתה עקב חריגה צפויה מתקרת אשראי של <bdo dir="ltr">{{accountDetails.limit|currency:'ILS'}}</bdo>
+    </p>
+</div>
